@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("https://static.vecteezy.com/system/resources/previews/006/852/804/original/abstract-blue-background-simple-design-for-your-website-free-vector.jpg");
+        }
+        .head{
+            background-color: rgb(9, 9, 60);
+            color: azure;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .navi{
+            background-color: rgb(13, 17, 73);
+            overflow: hidden;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+        .navi a{
+            float: left;
+            text-align: center;
+            padding: 14px;
+            color: azure;
+            text-decoration: none;
+        }
+        .navi a:hover{
+            background-color: burlywood;
+            color: black;
+        }
+        .navi a:active{
+            background-color: white;
+            color: rgb(18, 11, 50);
+        }
+        .contact{
+            background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tRVAr6oXykj544buP8WNkepqc2hzid6X_A&usqp=CAU") ;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+        .contact p{
+            font-weight: 1000;
+            font-family:cursive;
+        }
+        .contact input{
+            padding: 10px;
+            background-color: azure;
+            color: blue;
+            font-weight: bold;
+            font-family: cursive;
+        }
+        .contact button{
+            padding: 5px;
+            color: rgb(6, 6, 44);
+            background-color: white;
+            font-weight: bold;
+            font-family: cursive;
+        }
+        .contact button:hover{
+            background-color: black;
+            color: burlywood;
+        }
+        .footer{
+            background-color: rgb(15, 7, 39);
+            height: 100px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            color: azure;
+            padding: 20px;
+        }
+        .links a{
+            color: azure;
+            padding: 14px; 
+            text-decoration: none;
+        }
+        .links a:hover{
+            background-color: burlywood;
+            color: black;
+            border-radius: 30px;
+            border: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <center><h1>Contact us</h1></center>
+        
+    </div>
+    <nav>
+        <div class="navi">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="blog.html">BLOGS</a>
+            <a href="contactus.html">CONTACT US</a>
+        </div>
+    </nav>
+    <br>
+    <div class="contact">
+        <center><form action="https://formsubmit.co/miglanijatin26@gmail.com" method="POST">
+            <p>Name: *<input type="text" name="name" id="name" required placeholder="Jatin Miglani"></p>
+            <p>Email: *<input type="text" name="name" id="Email" required placeholder="miglanijatin26@gmail.com"></p>
+            <p>Message: *<input type="text" name="name" id="Message" required cols="100" rows="9" placeholder="Enter your Message"></p>
+            <button onclick="send()">Submit</button>
+        </form></center>
+        
+    </div>
+    <div>
+        <footer class="footer">
+            <center>
+                <i><p>© 2023 <a href="index.html" style="color: white;">BLOG</a> App. All rights reserved.</p></i>
+                
+            </center>
+            <hr>
+            <center class="links">
+                <a href="#"><ion-icon name="logo-github"></ion-icon>Instagram</a>
+                <a href="#">Youtube</a>
+                <a href="#">Website</a>
+              </center>
+          </footer>
+    </div>
+</body>
+</html>
