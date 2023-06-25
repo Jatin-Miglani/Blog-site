@@ -3,125 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Us</title>
     <style>
-        body{
-            background-image: url("https://static.vecteezy.com/system/resources/previews/006/852/804/original/abstract-blue-background-simple-design-for-your-website-free-vector.jpg");
+        body {
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
-        .head{
-            background-color: rgb(9, 9, 60);
-            color: azure;
-            padding: 10px;
-            font-size: 20px;
+        
+        .header {
+            background-color: #0c0d24;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
         }
-        .navi{
-            background-color: rgb(13, 17, 73);
+        
+        .nav {
+            background-color: #0c0d24;
             overflow: hidden;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
-        }
-        .navi a{
-            float: left;
             text-align: center;
+        }
+        
+        .nav a {
+            display: inline-block;
             padding: 14px;
-            color: azure;
+            color: white;
             text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .navi a:hover{
-            background-color: burlywood;
+        
+        .nav a:hover {
+            background-color: #bea06e;
             color: black;
         }
-        .navi a:active{
+        
+        .content {
             background-color: white;
-            color: rgb(18, 11, 50);
-        }
-        .contact{
-            background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tRVAr6oXykj544buP8WNkepqc2hzid6X_A&usqp=CAU") ;
             color: black;
+            padding: 40px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        
+        .content h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #0c0d24;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-form button:hover {
+            background-color: #bea06e;
+        }
+        
+        .footer {
+            background-color: #0c0d24;
+            color: white;
             padding: 20px;
             text-align: center;
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
         }
-        .contact p{
-            font-weight: 1000;
-            font-family:cursive;
+        
+        .footer p {
+            margin: 0;
         }
-        .contact input{
-            padding: 10px;
-            background-color: azure;
-            color: blue;
-            font-weight: bold;
-            font-family: cursive;
-        }
-        .contact button{
-            padding: 5px;
-            color: rgb(6, 6, 44);
-            background-color: white;
-            font-weight: bold;
-            font-family: cursive;
-        }
-        .contact button:hover{
-            background-color: black;
-            color: burlywood;
-        }
-        .footer{
-            background-color: rgb(15, 7, 39);
-            height: 100px;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            color: azure;
-            padding: 20px;
-        }
-        .links a{
-            color: azure;
-            padding: 14px; 
-            text-decoration: none;
-        }
-        .links a:hover{
-            background-color: burlywood;
-            color: black;
-            border-radius: 30px;
-            border: 5px;
+        @media (max-width: 768px) {
+            .nav a {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="head">
-        <center><h1>Contact us</h1></center>
-        
+    <div class="header">
+        <h1>Contact Us</h1>
     </div>
-    <nav>
-        <div class="navi">
-            <a href="index.html">HOME</a>
-            <a href="about.html">ABOUT</a>
-            <a href="blog.html">BLOGS</a>
-            <a href="contactus.html">CONTACT US</a>
-        </div>
+    <nav class="nav">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="blog.html">BLOGS</a>
+        <a href="contactus.html">CONTACT US</a>
     </nav>
-    <br>
-    <div class="contact">
-        <center><form action="https://formsubmit.co/miglanijatin26@gmail.com" method="POST">
-            <p>Name: *<input type="text" name="name" id="name" required placeholder="Jatin Miglani"></p>
-            <p>Email: *<input type="text" name="name" id="Email" required placeholder="miglanijatin26@gmail.com"></p>
-            <p>Message: *<input type="text" name="name" id="Message" required cols="100" rows="9" placeholder="Enter your Message"></p>
-            <button onclick="send()">Submit</button>
-        </form></center>
-        
+    <div class="content">
+        <h2>Get in Touch</h2>
+        <form class="contact-form" action="https://formsubmit.co/miglanijatin26@gmail.com" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Write your message here" rows="6" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
     </div>
-    <div>
-        <footer class="footer">
-            <center>
-                <i><p>© 2023 <a href="index.html" style="color: white;">BLOG</a> App. All rights reserved.</p></i>
-                
-            </center>
-            <hr>
-            <center class="links">
-                <a href="#"><ion-icon name="logo-github"></ion-icon>Instagram</a>
-                <a href="#">Youtube</a>
-                <a href="#">Website</a>
-              </center>
-          </footer>
+    <div class="footer">
+        <p>&copy; 2023 Our BLOG. All rights reserved.</p>
     </div>
 </body>
 </html>
