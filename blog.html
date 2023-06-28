@@ -236,6 +236,13 @@
             return storedBlogs ? JSON.parse(storedBlogs) : [];
         }
 
+        function handleCheckboxChange(event) {
+                var checkboxId = event.target.id;
+                var blogIndex = checkboxId.split("_")[1]; // Extract the blog index from the checkbox ID
+                var blogs = getStoredBlogs();
+                blogs[blogIndex].checked = event.target.checked; // Update the 'checked' property in the blog object
+                localStorage.setItem("blogs", JSON.stringify(blogs));
+        }
         function displayBlogs() {
             var blogs = getStoredBlogs();
             var blogContainer = document.getElementById("blogContainer");
@@ -260,9 +267,15 @@
                 newBlogTimestamp.classList.add("blog-timestamp");
                 newBlogTimestamp.textContent = "Created on " + blogTimestamp;
 
+                var newCheckbox = document.createElement("input"); // Create the checkbox element
+                newCheckbox.type = "checkbox"; // Set the checkbox type
+                newCheckbox.id = "checkbox_" + i; // Assign a unique ID to each checkbox
+                newCheckbox.addEventListener("change", handleCheckboxChange); // Add an event listener to handle checkbox changes
+
                 newBlogCard.appendChild(newBlogTitle);
                 newBlogCard.appendChild(newBlogTimestamp);
                 newBlogCard.appendChild(newBlogContent);
+                newBlogCard.appendChild(newCheckbox);
 
                 newBlogTitle.style.fontSize = "24px"; // Custom title font size
                 newBlogTitle.style.marginBottom = "10px"; // Custom margin below tistle
@@ -287,11 +300,15 @@
                 newBlogTimestamp.style.fontSize= "10px"; // Custom margin below title
 
 
+                newCheckbox.style.marginLeft= "60px"; // Custom margin below title
+                newCheckbox.style.marginBottom= "60px";
+                newCheckbox.style.width= "60px";
+
                                 
                 blogContainer.appendChild(newBlogTitle);
                 blogContainer.appendChild(newBlogTimestamp);
                 blogContainer.appendChild(newBlogContent);
-                
+                blogContainer.appendChild(newCheckbox);
             }
         }
     </script>
