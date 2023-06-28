@@ -12,21 +12,21 @@
             padding: 0;
             font-family: Arial, sans-serif;
         }
-        
+
         .header {
             background-color: #0c0d24;
             color: white;
             padding: 20px;
             text-align: center;
-            font-size: 24px;
+            font-size: 28px;
         }
-        
+
         .nav {
             background-color: #0c0d24;
             overflow: hidden;
             text-align: center;
         }
-        
+
         .nav a {
             display: inline-block;
             padding: 14px;
@@ -35,12 +35,55 @@
             font-weight: bold;
             transition: background-color 0.3s, color 0.3s;
         }
-        
+
         .nav a:hover {
             background-color: #bea06e;
             color: black;
         }
-        
+
+        .middle-content {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        #inp {
+            max-width: 500px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #messageForm {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #messageForm label {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #messageForm input,
+        #messageForm textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #messageForm input[type="submit"] {
+            background-color: #0c0d24;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #messageForm input[type="submit"]:hover {
+            background-color: #bea06e;
+        }
+
         .content {
             background-color: white;
             color: black;
@@ -48,74 +91,94 @@
             border-radius: 10px;
             margin: 20px;
         }
-        
+
         .content h2 {
             font-size: 24px;
             margin-bottom: 20px;
         }
-        
+
         .content p {
             font-size: 16px;
             line-height: 1.6;
             margin-bottom: 20px;
         }
-        
+
         .content .post {
             margin-bottom: 40px;
         }
-        
+
         .content .post h3 {
             font-size: 20px;
             margin-bottom: 10px;
         }
-        
+
         .content .post p {
             font-size: 14px;
             margin-bottom: 10px;
         }
-        
+
         .content .post a {
             color: #0c0d24;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
         }
-        
+
         .content .post a:hover {
             color: #bea06e;
         }
-        
+
         .footer {
             background-color: #0c0d24;
             color: white;
             padding: 20px;
             text-align: center;
         }
-        
+
         .footer p {
             margin: 0;
         }
+
         @media (max-width: 768px) {
             .nav a {
                 padding: 10px;
             }
-            
+
             .content {
                 padding: 20px;
+            }
+
+            .middle-content {
+                margin: 10px;
+            }
+
+            #inp {
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <h1>Blog</h1>
-    </div>
+    </header>
     <nav class="nav">
         <a href="index.html">HOME</a>
         <a href="about.html">ABOUT</a>
         <a href="blog.html">BLOGS</a>
         <a href="contactus.html">CONTACT US</a>
     </nav>
+    <div class="middle-content">
+        <div id="inp">
+            <form id="messageForm">
+                <label for="title">Create Blog</label>
+                <input type="text" id="title" placeholder="Title"><br>
+                <textarea rows="5" id="content" placeholder="Content"></textarea><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <div id="blogContainer"></div>
     <div class="content">
         <div class="post">
             <h3>Blog Post Title</h3>
@@ -123,7 +186,6 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada efficitur erat, sed interdum turpis lobortis sed. Integer gravida, ex et pulvinar porta, tortor massa feugiat enim, eu rhoncus mauris nisl ac neque.</p>
             <p>Read more <a href="#">here</a></p>
         </div>
-        
         <div class="post">
             <h3>Another Blog Post Title</h3>
             <p><em>Published on February 1, 2023</em></p>
@@ -131,8 +193,86 @@
             <p>Read more <a href="#">here</a></p>
         </div>
     </div>
-    <div class="footer">
+    <footer class="footer">
         <p>&copy; 2023 Our BLOG. All rights reserved.</p>
-    </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            displayBlogs();
+        });
+
+        document.getElementById("messageForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var blogTitle = document.getElementById("title").value;
+            var blogContent = document.getElementById("content").value;
+            var blogContainer = document.getElementById("blogContainer");
+
+            var newBlogTitle = document.createElement("h2");
+            newBlogTitle.classList.add("blog-title");
+            newBlogTitle.textContent = blogTitle;
+
+            var newBlogContent = document.createElement("p");
+            newBlogContent.classList.add("blog-content");
+            newBlogContent.textContent = blogContent;
+
+            blogContainer.appendChild(newBlogTitle);
+            blogContainer.appendChild(newBlogContent);
+
+            saveBlog(blogTitle, blogContent);
+
+            document.getElementById("title").value = "";
+            document.getElementById("content").value = "";
+        });
+
+        function saveBlog(title, content) {
+            var blogs = getStoredBlogs();
+            blogs.push({ title: title, content: content });
+            localStorage.setItem("blogs", JSON.stringify(blogs));
+        }
+
+        function getStoredBlogs() {
+            var storedBlogs = localStorage.getItem("blogs");
+            return storedBlogs ? JSON.parse(storedBlogs) : [];
+        }
+
+        function displayBlogs() {
+            var blogs = getStoredBlogs();
+            var blogContainer = document.getElementById("blogContainer");
+
+            for (var i = 0; i < blogs.length; i++) {
+                var blogTitle = blogs[i].title;
+                var blogContent = blogs[i].content;
+
+                var newBlogCard = document.createElement("div");
+                newBlogCard.classList.add("blog-card");
+
+                var newBlogTitle = document.createElement("h1");
+                newBlogTitle.classList.add("blog-title");
+                newBlogTitle.textContent = blogTitle;
+
+                var newBlogContent = document.createElement("p");
+                newBlogContent.classList.add("blog-content");
+                newBlogContent.textContent = blogContent;
+
+                newBlogCard.appendChild(newBlogTitle);
+                newBlogCard.appendChild(newBlogContent);
+
+
+                newBlogTitle.style.fontSize = "24px"; // Custom title font size
+                newBlogTitle.style.marginBottom = "10px"; // Custom margin below title
+                newBlogTitle.style.marginLeft = "50px"; // Custom margin below title
+
+
+                newBlogContent.style.fontSize = "16px"; // Custom content font size
+                newBlogContent.style.lineHeight = "1.6"; // Custom line height for content
+                newBlogContent.style.marginBottom = "20px"; // Custom margin below content
+                newBlogContent.style.marginLeft = "57px"; // Custom margin below title
+
+                                
+                blogContainer.appendChild(newBlogTitle);
+                blogContainer.appendChild(newBlogContent);
+            }
+        }
+    </script>
 </body>
 </html>
