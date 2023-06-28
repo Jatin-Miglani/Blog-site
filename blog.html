@@ -226,7 +226,8 @@
 
         function saveBlog(title, content) {
             var blogs = getStoredBlogs();
-            blogs.push({ title: title, content: content });
+            var currentTime = new Date().toLocaleString(); 
+            blogs.push({ title: title, content: content, timestamp: currentTime  });
             localStorage.setItem("blogs", JSON.stringify(blogs));
         }
 
@@ -242,6 +243,7 @@
             for (var i = 0; i < blogs.length; i++) {
                 var blogTitle = blogs[i].title;
                 var blogContent = blogs[i].content;
+                var blogTimestamp = blogs[i].timestamp;
 
                 var newBlogCard = document.createElement("div");
                 newBlogCard.classList.add("blog-card");
@@ -254,12 +256,16 @@
                 newBlogContent.classList.add("blog-content");
                 newBlogContent.textContent = blogContent;
 
+                var newBlogTimestamp = document.createElement("p"); // Create a new paragraph element for the timestamp
+                newBlogTimestamp.classList.add("blog-timestamp");
+                newBlogTimestamp.textContent = "Created on " + blogTimestamp;
+
                 newBlogCard.appendChild(newBlogTitle);
+                newBlogCard.appendChild(newBlogTimestamp);
                 newBlogCard.appendChild(newBlogContent);
 
-
                 newBlogTitle.style.fontSize = "24px"; // Custom title font size
-                newBlogTitle.style.marginBottom = "10px"; // Custom margin below title
+                newBlogTitle.style.marginBottom = "10px"; // Custom margin below tistle
                 newBlogTitle.style.marginLeft = "50px"; // Custom margin below title
                 newBlogTitle.style.backgroundColor = " white"; // Custom margin below title
                 newBlogTitle.style.padding= "10px"; // Custom margin below title
@@ -277,9 +283,13 @@
                 newBlogContent.style.borderRadius= "15px"; // Custom margin below title
                 newBlogContent.style.width= "85%"; // Custom margin below title
 
+                newBlogTimestamp.style.marginLeft= "60px"; // Custom margin below title
+                newBlogTimestamp.style.fontSize= "10px"; // Custom margin below title
+
 
                                 
                 blogContainer.appendChild(newBlogTitle);
+                blogContainer.appendChild(newBlogTimestamp);
                 blogContainer.appendChild(newBlogContent);
                 
             }
